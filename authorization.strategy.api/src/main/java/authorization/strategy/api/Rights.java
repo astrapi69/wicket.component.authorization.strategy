@@ -1,4 +1,4 @@
-package wicket.component.authorization.strategy;
+package authorization.strategy.api;
 
 import java.io.Serializable;
 import java.util.Arrays;

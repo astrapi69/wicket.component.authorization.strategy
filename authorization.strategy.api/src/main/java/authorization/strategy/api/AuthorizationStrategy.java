@@ -1,5 +1,4 @@
-package wicket.component.authorization.strategy;
-
+package authorization.strategy.api;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;

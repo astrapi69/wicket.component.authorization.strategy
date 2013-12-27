@@ -5,7 +5,7 @@
 	<groupId>wicket.component.authorization.strategy</groupId>
 	<artifactId>wicket.component.authorization.strategy</artifactId>
 	<version>6.9.0</version>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<name></name>
 	<description>
 	  	Demonstrates how to use the functionality from the
@@ -187,4 +187,8 @@
 
 	</build>
 
+	<modules>
+		<module>authorization.strategy.api</module>
+		<module>component.authorization.strategy.example</module>
+	</modules>
 </project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roles>
+	<role name="waiter">
+		<description>This is a waiter.</description>
+		<set>
+			<right>read table rooms</right>
+			<right>insert data into reservation table</right>
+			<right>delete data from reservation table</right>
+			<right>delete data from reservation table</right>
+		</set>
+	</role>
+	<role name="barman">
+		<description>This is a bar man.</description>
+		<set>
+			<right>insert data from table rooms</right>
+			<right>read table rooms</right>
+			<right>insert data into reservation table</right>
+			<right>delete data from reservation table</right>
+			<right>delete data from reservation table</right>
+		</set>
+	</role>
+	<role name="boss">
+		<description>This is the boss.</description>
+		<set>
+			<right>insert data from table rooms</right>
+			<right>read table rooms</right>
+			<right>delete table rooms</right>
+			<right>insert data into reservation table</right>
+			<right>delete data from reservation table</right>
+			<right>delete data from reservation table</right>
+		</set>
+	</role>
+</roles>
