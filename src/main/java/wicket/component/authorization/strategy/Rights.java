@@ -7,20 +7,16 @@ import java.util.HashSet;
 import org.apache.wicket.Component;
 import org.apache.wicket.MetaDataKey;
 
-public class Rights implements Serializable {
+public abstract class Rights implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private static MetaDataKey<HashSet<Right>> ENABLED = new MetaDataKey<HashSet<Right>>() {
+	private static MetaDataKey<HashSet<Right>> EDITABLE = new MetaDataKey<HashSet<Right>>() {
 		private static final long serialVersionUID = 1L;
 	};
-	private static MetaDataKey<HashSet<Right>> VISIBLE = new MetaDataKey<HashSet<Right>>() {
+	private static MetaDataKey<HashSet<Right>> RENDERABLE = new MetaDataKey<HashSet<Right>>() {
 		private static final long serialVersionUID = 1L;
 	};
 
-	public static Rights boundWith(Component component) {
-		return new Rights(component);
-	}
-
-	private final Component component;
+	protected final Component component;
 
 	protected Rights(Component component) {
 		this.component = component;
@@ -31,13 +27,13 @@ public class Rights implements Serializable {
 		if (rights.length == 0) {
 			component.setMetaData(key, null);
 		} else {
-			HashSet<Right> stored = component.getMetaData(key);
-			if (stored == null) {
-				stored = new HashSet<Right>();
-				component.setMetaData(key, stored);
+			HashSet<Right> componentRights = component.getMetaData(key);
+			if (componentRights == null) {
+				componentRights = new HashSet<Right>();
+				component.setMetaData(key, componentRights);
 			}
-			stored.clear();
-			stored.addAll(Arrays.asList(rights));
+			componentRights.clear();
+			componentRights.addAll(Arrays.asList(rights));
 		}
 	}
 
@@ -45,25 +41,23 @@ public class Rights implements Serializable {
 		return onAuthorized(key);
 	}
 
-	protected boolean onAuthorized(MetaDataKey<HashSet<Right>> key) {
-		return false;
-	}
+	protected abstract boolean onAuthorized(MetaDataKey<HashSet<Right>> key);
 
-	public Rights enable(Right... rights) {
-		add(ENABLED, rights);
+	public Rights editable(Right... rights) {
+		add(EDITABLE, rights);
 		return this;
 	}
 
-	public boolean isEnabled() {
-		return isAuthorized(ENABLED);
+	public boolean isEditable() {
+		return isAuthorized(EDITABLE);
 	}
 
-	public boolean isVisible() {
-		return isAuthorized(VISIBLE);
+	public boolean isRenderable() {
+		return isAuthorized(RENDERABLE);
 	}
 
-	public Rights visible(Right... rights) {
-		add(VISIBLE, rights);
+	public Rights renderable(Right... rights) {
+		add(RENDERABLE, rights);
 		return this;
 	}
 
