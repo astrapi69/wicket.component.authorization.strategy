@@ -10,6 +10,10 @@ public class UserDataPanel extends Panel {
 
 	private static final long serialVersionUID = 1L;
 
+	public UserDataPanel(String id) {
+		this(id, null);
+	}
+
 	public UserDataPanel(String id, IModel<?> model) {
 		super(id, model);		
 		IModel<UserData> userDataModel = new CompoundPropertyModel<UserData>(new UserData());
@@ -25,10 +29,6 @@ public class UserDataPanel extends Panel {
 		TextField<String> description = new TextField<String>("description");
 		ApplicationRights.bind(description).renderable(ApplicationRight.VIEW_DESCRIPTION).editable(ApplicationRight.EDIT_DESCRIPTION);
 		form.add(description);
-	}
-
-	public UserDataPanel(String id) {
-		this(id, null);
 	}
 
 }

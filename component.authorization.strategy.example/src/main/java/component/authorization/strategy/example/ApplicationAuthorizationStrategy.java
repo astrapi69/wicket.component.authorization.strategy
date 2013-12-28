@@ -4,10 +4,20 @@ import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.Session;
 import org.apache.wicket.request.component.IRequestableComponent;
 
-import authorization.strategy.api.AuthorizationStrategy;
+import authorization.strategy.api.ComponentAuthorizationStrategy;
 
 
-public class ApplicationAuthorizationStrategy extends AuthorizationStrategy {
+public class ApplicationAuthorizationStrategy extends ComponentAuthorizationStrategy {
+
+	@Override
+	protected boolean isEditable(Component component) {
+		return ApplicationRights.bind(component).isEditable();
+	}
+
+	@Override
+	protected boolean isRenderable(Component component) {
+		return ApplicationRights.bind(component).isRenderable();
+	}
 
 	@Override
 	protected <T extends IRequestableComponent> boolean onInstantiationAuthorized(
@@ -21,16 +31,6 @@ public class ApplicationAuthorizationStrategy extends AuthorizationStrategy {
 		}
 
 		throw new RestartResponseAtInterceptPageException(LoginPage.class);
-	}
-
-	@Override
-	protected boolean isEditable(Component component) {
-		return ApplicationRights.bind(component).isEditable();
-	}
-
-	@Override
-	protected boolean isRenderable(Component component) {
-		return ApplicationRights.bind(component).isRenderable();
 	}
 
 }

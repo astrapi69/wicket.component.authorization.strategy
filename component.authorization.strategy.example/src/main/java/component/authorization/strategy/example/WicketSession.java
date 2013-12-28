@@ -1,6 +1,4 @@
 package component.authorization.strategy.example;
-import java.util.List;
-
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 
@@ -12,22 +10,22 @@ public class WicketSession extends WebSession {
 	private static final long serialVersionUID = 1L;
 	private User user;
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public WicketSession(Request request) {
 		super(request);
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public boolean isAuthorized(Right right) {
+		return user.isAuthorized(right);
+	}
+
 	public boolean login(String username, String password) {
-		List<User> users = WicketApplication.getUsers();
-		for (User user : users) {			
-			if(user.getUsername().equals(username) && user.getPassword().equals(password)){
+		if(WicketApplication.getUsernameuser().containsKey(username)) {
+			User user = WicketApplication.getUsernameuser().get(username);
+			if(user.getPassword().equals(password)){
 				this.user = user;
 				return true;
 			}
@@ -35,7 +33,7 @@ public class WicketSession extends WebSession {
 		return false;
 	}
 
-	public boolean isAuthorized(Right right) {
-		return user.isAuthorized(right);
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

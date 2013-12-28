@@ -12,14 +12,16 @@ public class ApplicationRights extends Rights {
 	
 
 
+	private static final long serialVersionUID = 1L;
+
 	public static ApplicationRights bind(Component component) {
 		return new ApplicationRights(component);
 	}
-
+	
 	protected ApplicationRights(Component component) {
 		super(component);
 	}
-	
+
 	protected boolean onAuthorized(MetaDataKey<HashSet<Right>> key) {
 		HashSet<Right> componentRights = component.getMetaData(key);
 		if (componentRights == null) {
@@ -35,7 +37,5 @@ public class ApplicationRights extends Rights {
 		}
 		return false;
 	}
-
-	private static final long serialVersionUID = 1L;
 
 }
