@@ -48,3 +48,11 @@
 # Binaries generated files #
 ############################
 /bin
+
+################
+# gradle files #
+################
+/build
+/.gradle
+/gradle
+/reports
