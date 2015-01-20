@@ -1,4 +1,5 @@
 package component.authorization.strategy.example;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.Session;

@@ -9,8 +9,6 @@ import authorization.strategy.api.Right;
 import authorization.strategy.api.Rights;
 
 public class ApplicationRights extends Rights {
-	
-
 
 	private static final long serialVersionUID = 1L;
 

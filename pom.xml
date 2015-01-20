@@ -127,7 +127,7 @@
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>authorization.strategy.api</artifactId>
-				<version>${project.version}</version>
+				<version>${wicket.version}</version>
 			</dependency>
 
 		</dependencies>
