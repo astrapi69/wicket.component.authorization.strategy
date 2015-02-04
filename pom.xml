@@ -9,6 +9,11 @@
 
 	<name>${project.artifactId}</name>
 
+	<modules>
+		<module>authorization.strategy.api</module>
+		<module>component.authorization.strategy.example</module>
+	</modules>
+
 	<description>
 	  	Demonstrates how to use the functionality from the
 	  	wicket components visibility, enabled, disabled or not visible if the user does not have the permission.
@@ -46,11 +51,6 @@
 		</license>
 
 	</licenses>
-
-	<modules>
-		<module>authorization.strategy.api</module>
-		<module>component.authorization.strategy.example</module>
-	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
