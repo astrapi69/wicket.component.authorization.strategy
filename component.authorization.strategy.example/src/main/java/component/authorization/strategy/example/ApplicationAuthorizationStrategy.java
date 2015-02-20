@@ -4,6 +4,8 @@ import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.Session;
 import org.apache.wicket.request.component.IRequestableComponent;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.IResource;
 
 import authorization.strategy.api.ComponentAuthorizationStrategy;
 
@@ -32,6 +34,11 @@ public class ApplicationAuthorizationStrategy extends ComponentAuthorizationStra
 		}
 
 		throw new RestartResponseAtInterceptPageException(LoginPage.class);
+	}
+	
+	public boolean isResourceAuthorized(IResource resource, PageParameters parameters)
+	{
+		return false;
 	}
 
 }
