@@ -53,8 +53,10 @@
 	</licenses>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jetty.version>8.1.16.v20140903</jetty.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>	
+		<!-- JETTY 9 version -->
+		<jetty9.version>9.3.0.v20150612</jetty9.version>
+		<wicket-jetty9-runner.version>1.0.1</wicket-jetty9-runner.version>
 		<wicket.version>[6.0.0,6.99)</wicket.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
@@ -116,14 +118,38 @@
 				<version>${testng.version}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- JETTY DEPENDENCIES FOR TESTING -->
+			<!-- JETTY 9 DEPENDENCIES -->
 			<dependency>
-				<groupId>org.eclipse.jetty.aggregate</groupId>
-				<artifactId>jetty-all-server</artifactId>
-				<version>${jetty.version}</version>
-				<scope>provided</scope>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-server</artifactId>
+				<version>${jetty9.version}</version>
 			</dependency>
-			
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-webapp</artifactId>
+				<version>${jetty9.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-util</artifactId>
+				<version>${jetty9.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-jmx</artifactId>
+				<version>${jetty9.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-deploy</artifactId>
+				<version>${jetty9.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-jetty9-runner</artifactId>
+				<version>${wicket-jetty9-runner.version}</version>
+			</dependency>
+						
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>authorization.strategy.api</artifactId>
@@ -161,11 +187,30 @@
 			<artifactId>testng</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- JETTY DEPENDENCIES FOR TESTING -->
+		<!-- JETTY 9 DEPENDENCIES TEST -->
 		<dependency>
-			<groupId>org.eclipse.jetty.aggregate</groupId>
-			<artifactId>jetty-all-server</artifactId>
-			<scope>provided</scope>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jmx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-deploy</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-jetty9-runner</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -359,23 +404,17 @@
 				</plugin>
 
 				<plugin>
-					<groupId>org.mortbay.jetty</groupId>
+					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>
-					<version>${jetty.version}</version>
+					<version>${jetty9.version}</version>
 					<configuration>
-						<connectors>
-							<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-								<port>9090</port>
-								<maxIdleTime>3600000</maxIdleTime>
-							</connector>
-							<connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-								<port>9443</port>
-								<maxIdleTime>3600000</maxIdleTime>
-								<keystore>${project.build.directory}/test-classes/keystore</keystore>
-								<password>wicket</password>
-								<keyPassword>wicket</keyPassword>
-							</connector>
-						</connectors>
+						<systemProperties>
+							<systemProperty>
+								<name>maven.project.build.directory.test-classes</name>
+								<value>${project.build.directory}/test-classes</value>
+							</systemProperty>
+						</systemProperties>
+						<jettyXml>${project.basedir}/src/test/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml,${project.basedir}/src/test/jetty/jetty-deploy.xml</jettyXml>
 					</configuration>
 				</plugin>
 
