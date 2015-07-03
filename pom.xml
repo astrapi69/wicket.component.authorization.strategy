@@ -55,7 +55,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>8.1.16.v20140903</jetty.version>
-		<wicket.version>${project.version}</wicket.version>
+		<wicket.version>[6.0.0,6.99)</wicket.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
 		<testng.version>6.9.4</testng.version>
