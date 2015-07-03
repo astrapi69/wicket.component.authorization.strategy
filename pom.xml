@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.alpharogroup</groupId>
 	<artifactId>wicket.component.authorization.strategy</artifactId>
-	<version>6.18.0</version>
+	<version>6.20.0</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
@@ -447,6 +447,12 @@
 					<plugin>
 						<inherited>true</inherited>
 						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+
+					<plugin>
+						<inherited>true</inherited>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
 					</plugin>
 
 					<plugin>
