@@ -62,7 +62,7 @@
 		<log4j.version>1.2.16</log4j.version>
 		<testng.version>6.9.4</testng.version>
 		<!-- MAVEN PLUGIN versions -->
-		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 		<maven-compiler-plugin.source.version>1.7</maven-compiler-plugin.source.version>
 		<maven-compiler-plugin.target.version>1.7</maven-compiler-plugin.target.version>
 		<maven-compiler-plugin.compilerVersion>1.7</maven-compiler-plugin.compilerVersion>
@@ -73,7 +73,7 @@
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 		<wtp.version>2.0</wtp.version>
-		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
+		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
