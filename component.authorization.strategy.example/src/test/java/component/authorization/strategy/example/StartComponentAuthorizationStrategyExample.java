@@ -15,11 +15,7 @@ import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
-
-//import org.eclipse.jetty.server.Connector;
-//import org.eclipse.jetty.server.Server;
-//import org.eclipse.jetty.server.nio.SelectChannelConnector;
-//import org.eclipse.jetty.webapp.WebAppContext;
+import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 
 public class StartComponentAuthorizationStrategyExample {
     public static void main(String[] args) throws Exception {
@@ -35,7 +31,8 @@ public class StartComponentAuthorizationStrategyExample {
 		// Add a file appender to the logger programatically
 		// Logger logger = org.apache.log4j.LogManager.getLogger("org.eclipse.jetty");
 //		Logger.getRootLogger().addFileAppender(newFileAppender("./application.log"));
-		ServletContextHandler servletContextHandler = Jetty9Runner
+
+		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.filterHolderConfiguration(
@@ -43,7 +40,7 @@ public class StartComponentAuthorizationStrategyExample {
 						.builder()
 						.filterClass(WicketFilter.class)
 						.filterPath(filterPath)
-						.initParameter(WicketFilter.FILTER_MAPPING_PARAM, filterPath)
+						.initParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*")
 						.initParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM,
 							WicketApplication.class.getName()).build())
 				.servletHolderConfiguration(
@@ -57,34 +54,7 @@ public class StartComponentAuthorizationStrategyExample {
 			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
 			.keyStorePathResource("/keystore").build();
 		Server server = new Server();
-		Jetty9Runner.run(server, config);
-    	
-//    	final Server server = new Server();
-//		final SelectChannelConnector connector = new SelectChannelConnector();
-//		// Set some timeout options to make debugging easier.
-//		connector.setMaxIdleTime(1000 * 60 * 60);
-//		connector.setSoLingerTime(-1);
-//		connector.setPort(9090);
-//		server.setConnectors(new Connector[] { connector });
-//
-//		final WebAppContext bb = new WebAppContext();
-//		bb.setServer(server);
-//		bb.setContextPath("/");
-//		bb.setWar("src/main/webapp");
-//
-//		server.setHandler(bb);
-//
-//		try {
-//			System.out
-//					.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
-//			server.start();
-//			while (System.in.available() == 0)
-//				Thread.sleep(5000);
-//			server.stop();
-//			server.join();
-//		} catch (final Exception e) {
-//			e.printStackTrace();
-//			System.exit(100);
-//		}
+		Jetty9Runner.runServletContextHandler(server, config);
+    
     }
 }

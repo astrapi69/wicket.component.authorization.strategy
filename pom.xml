@@ -56,7 +56,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>	
 		<!-- JETTY 9 version -->
 		<jetty9.version>9.3.0.v20150612</jetty9.version>
-		<wicket-jetty9-runner.version>1.0.1</wicket-jetty9-runner.version>
+		<wicket-jetty9-runner.version>1.0.2</wicket-jetty9-runner.version>
 		<wicket.version>[6.0.0,6.99)</wicket.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
