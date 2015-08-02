@@ -17,22 +17,25 @@ import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 
-public class StartComponentAuthorizationStrategyExample {
-    public static void main(String[] args) throws Exception {
+public class StartComponentAuthorizationStrategyExample
+{
+	public static void main(final String[] args) throws Exception
+	{
 
-		int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec *
-																	// 30min=1800sec)...
+		final int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec
+																		// *
+																		// 30min=1800sec)...
 		System.setProperty("wicket.configuration", "development");
-		String projectname = "component.authorization.strategy.example";
-		File projectDirectory = PathFinder.getProjectDirectory();
-		File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
-			"webapp");
-		String filterPath = "/*";
+		final String projectname = "component.authorization.strategy.example";
+		final File projectDirectory = PathFinder.getProjectDirectory();
+		final File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src",
+			"main", "webapp");
+		final String filterPath = "/*";
 		// Add a file appender to the logger programatically
 		// Logger logger = org.apache.log4j.LogManager.getLogger("org.eclipse.jetty");
-//		Logger.getRootLogger().addFileAppender(newFileAppender("./application.log"));
+		// Logger.getRootLogger().addFileAppender(newFileAppender("./application.log"));
 
-		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
+		final ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.filterHolderConfiguration(
@@ -48,13 +51,13 @@ public class StartComponentAuthorizationStrategyExample {
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
 
-		Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
+		final Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
 			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
 			.keyStorePathResource("/keystore").build();
-		Server server = new Server();
+		final Server server = new Server();
 		Jetty9Runner.runServletContextHandler(server, config);
-    
-    }
+
+	}
 }

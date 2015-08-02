@@ -3,12 +3,12 @@ package component.authorization.strategy.example;
 import authorization.strategy.api.Right;
 
 /**
- * The Enum EnumRight is an implementation from the interface Right as an enum
- * that encapsulates another Right. Sometimes the need is to decorate special
- * application rights so we can give the special application right as an
- * argument to the enum object.
+ * The Enum EnumRight is an implementation from the interface Right as an enum that encapsulates
+ * another Right. Sometimes the need is to decorate special application rights so we can give the
+ * special application right as an argument to the enum object.
  */
-public enum EnumRight implements Right {
+public enum EnumRight implements Right
+{
 
 	/** The view description. */
 	VIEW_DESCRIPTION(SpecialRight.VIEW_DESCRIPTION),
@@ -26,21 +26,23 @@ public enum EnumRight implements Right {
 	private final SpecialRight right;
 
 	/**
-	 * Gets the right.
-	 * 
-	 * @return the right
-	 */
-	public SpecialRight getRight() {
-		return right;
-	}
-
-	/**
 	 * Instantiates a new enum right.
 	 * 
 	 * @param right
 	 *            the right
 	 */
-	private EnumRight(SpecialRight right) {
+	private EnumRight(final SpecialRight right)
+	{
 		this.right = right;
+	}
+
+	/**
+	 * Gets the right.
+	 * 
+	 * @return the right
+	 */
+	public SpecialRight getRight()
+	{
+		return right;
 	}
 }

@@ -10,18 +10,21 @@ import org.apache.wicket.MetaDataKey;
 /**
  * The Class Rights decorates a component and adds Right objects to it.
  */
-public abstract class Rights implements Serializable {
-	
+public abstract class Rights implements Serializable
+{
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The Constant MetaDataKey that marks if a component is editable. */
-	private static MetaDataKey<HashSet<Right>> EDITABLE = new MetaDataKey<HashSet<Right>>() {
+	private static MetaDataKey<HashSet<Right>> EDITABLE = new MetaDataKey<HashSet<Right>>()
+	{
 		private static final long serialVersionUID = 1L;
 	};
-	
+
 	/** The Constant MetaDataKey that marks if a component is renderable. */
-	private static MetaDataKey<HashSet<Right>> RENDERABLE = new MetaDataKey<HashSet<Right>>() {
+	private static MetaDataKey<HashSet<Right>> RENDERABLE = new MetaDataKey<HashSet<Right>>()
+	{
 		private static final long serialVersionUID = 1L;
 	};
 
@@ -31,25 +34,34 @@ public abstract class Rights implements Serializable {
 	/**
 	 * Instantiates a new rights.
 	 *
-	 * @param component the component for add Right objects.
+	 * @param component
+	 *            the component for add Right objects.
 	 */
-	protected Rights(Component component) {
+	protected Rights(final Component component)
+	{
 		this.component = component;
 	}
 
 	/**
 	 * Adds the given Right objects to this component for the given MetaDataKey.
 	 *
-	 * @param key the MetaDataKey key
-	 * @param rights the Right objects to add
+	 * @param key
+	 *            the MetaDataKey key
+	 * @param rights
+	 *            the Right objects to add
 	 */
-	private void add(MetaDataKey<HashSet<Right>> key, Right... rights) {
+	private void add(final MetaDataKey<HashSet<Right>> key, final Right... rights)
+	{
 
-		if (rights.length == 0) {
+		if (rights.length == 0)
+		{
 			component.setMetaData(key, null);
-		} else {
+		}
+		else
+		{
 			HashSet<Right> componentRights = component.getMetaData(key);
-			if (componentRights == null) {
+			if (componentRights == null)
+			{
 				componentRights = new HashSet<Right>();
 				component.setMetaData(key, componentRights);
 			}
@@ -59,32 +71,28 @@ public abstract class Rights implements Serializable {
 	}
 
 	/**
-	 * Checks if this component is authorized for the given MetaDataKey.
+	 * Adds the given Right objects to this component for the MetaDataKey {@link Rights#EDITABLE}
 	 *
-	 * @param key the MetaDataKey object
-	 * @return true, if this component is authorized, otherwise false
+	 * @param rights
+	 *            the Right objects to add
+	 * @return this object.
 	 */
-	public boolean isAuthorized(MetaDataKey<HashSet<Right>> key) {
-		return onAuthorized(key);
+	public Rights editable(final Right... rights)
+	{
+		add(EDITABLE, rights);
+		return this;
 	}
 
 	/**
-	 * On authorized.
+	 * Checks if this component is authorized for the given MetaDataKey.
 	 *
-	 * @param key the key
-	 * @return true, if successful
+	 * @param key
+	 *            the MetaDataKey object
+	 * @return true, if this component is authorized, otherwise false
 	 */
-	protected abstract boolean onAuthorized(MetaDataKey<HashSet<Right>> key);
-
-	/**
-	 * Adds the given Right objects to this component for the MetaDataKey {@link Rights#EDITABLE}
-	 *
-	 * @param rights the Right objects to add
-	 * @return this object.
-	 */
-	public Rights editable(Right... rights) {
-		add(EDITABLE, rights);
-		return this;
+	public boolean isAuthorized(final MetaDataKey<HashSet<Right>> key)
+	{
+		return onAuthorized(key);
 	}
 
 	/**
@@ -92,7 +100,8 @@ public abstract class Rights implements Serializable {
 	 *
 	 * @return true, if is editable
 	 */
-	public boolean isEditable() {
+	public boolean isEditable()
+	{
 		return isAuthorized(EDITABLE);
 	}
 
@@ -101,17 +110,29 @@ public abstract class Rights implements Serializable {
 	 *
 	 * @return true, if is renderable
 	 */
-	public boolean isRenderable() {
+	public boolean isRenderable()
+	{
 		return isAuthorized(RENDERABLE);
 	}
 
 	/**
+	 * On authorized.
+	 *
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 */
+	protected abstract boolean onAuthorized(final MetaDataKey<HashSet<Right>> key);
+
+	/**
 	 * Adds the given Right objects to this component for the MetaDataKey {@link Rights#RENDERABLE}
 	 *
-	 * @param rights  the Right objects to add
+	 * @param rights
+	 *            the Right objects to add
 	 * @return this object
 	 */
-	public Rights renderable(Right... rights) {
+	public Rights renderable(final Right... rights)
+	{
 		add(RENDERABLE, rights);
 		return this;
 	}

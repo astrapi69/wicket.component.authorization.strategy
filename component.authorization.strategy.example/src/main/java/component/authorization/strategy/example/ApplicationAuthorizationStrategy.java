@@ -10,35 +10,41 @@ import org.apache.wicket.request.resource.IResource;
 import authorization.strategy.api.ComponentAuthorizationStrategy;
 
 
-public class ApplicationAuthorizationStrategy extends ComponentAuthorizationStrategy {
+public class ApplicationAuthorizationStrategy extends ComponentAuthorizationStrategy
+{
 
 	@Override
-	protected boolean isEditable(Component component) {
+	protected boolean isEditable(final Component component)
+	{
 		return ApplicationRights.bind(component).isEditable();
 	}
 
 	@Override
-	protected boolean isRenderable(Component component) {
+	protected boolean isRenderable(final Component component)
+	{
 		return ApplicationRights.bind(component).isRenderable();
+	}
+
+	public boolean isResourceAuthorized(final IResource resource, final PageParameters parameters)
+	{
+		return false;
 	}
 
 	@Override
 	protected <T extends IRequestableComponent> boolean onInstantiationAuthorized(
-			Class<T> componentClass) {
-		if (((WicketSession) Session.get()).getUser() != null) {
+		final Class<T> componentClass)
+	{
+		if (((WicketSession)Session.get()).getUser() != null)
+		{
 			return true;
 		}
 
-		if (LoginPage.class.isAssignableFrom(componentClass)) {
+		if (LoginPage.class.isAssignableFrom(componentClass))
+		{
 			return true;
 		}
 
 		throw new RestartResponseAtInterceptPageException(LoginPage.class);
-	}
-	
-	public boolean isResourceAuthorized(IResource resource, PageParameters parameters)
-	{
-		return false;
 	}
 
 }
