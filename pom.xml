@@ -61,51 +61,9 @@
 	<properties>
 		<!-- WICKET version -->
 		<wicket.version>7.1.0</wicket.version>
+		<!-- WICKETSTUFF versions -->
+		<wicketstuff.version>7.1.0</wicketstuff.version>
 	</properties>
-
-	<dependencyManagement>
-
-		<dependencies>
-
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>authorization.strategy.api</artifactId>
-				<version>${wicket.version}</version>
-			</dependency>
-
-		</dependencies>
-
-	</dependencyManagement>
-
-	<dependencies>
-		<!-- WICKET DEPENDENCIES -->
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-core</artifactId>
-		</dependency>
-		<!-- LOGGING DEPENDENCIES -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
 
 	<build>
 
