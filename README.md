@@ -58,6 +58,7 @@ Do not hesitate to contact the wicket.component.authorization.strategy developer
 
 # Donate
 
+If you like this library, please consider a donation through 
 <a href="https://flattr.com/submit/auto?fid=r7vp62&url=https%3A%2F%2Fgithub.com%2Fastrapi69%2Fwicket.component.authorization.strategy" target="_blank">
 <img src="http://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0">
 </a>
