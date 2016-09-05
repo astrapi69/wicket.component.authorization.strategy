@@ -5,7 +5,7 @@ The wicket.component.authorization.strategy project provides an API for authoriz
 ## Key features:
 
 1. Very small size 
-2. Provide authorization of applications
+2. Provide authorization of wicket applications
 3. Provide visibility of wicket components over permissions
 
 ## License
