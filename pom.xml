@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>wicket.component.authorization.strategy</artifactId>
+	<version>7.3.0</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
