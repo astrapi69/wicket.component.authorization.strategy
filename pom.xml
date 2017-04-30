@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-wicket-parent</artifactId>
-		<version>7.3.1</version>
+		<version>6.25.2</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -14,10 +14,6 @@
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}</name>
-
-	<modules>
-		<module>authorization-strategy-api</module>
-	</modules>
 
 	<description>
 	  	Demonstrates how to use the functionality from the
@@ -57,9 +53,13 @@
 
 	</licenses>
 
+	<modules>
+		<module>authorization-strategy-api</module>
+	</modules>
+
 	<properties>
 		<!-- WICKET version -->
-		<wicket.version>7.3.0</wicket.version>
+		<wicket.version>6.25.0</wicket.version>
 		<!-- WICKETSTUFF versions -->
 		<wicketstuff.version>${wicket.version}</wicketstuff.version>
 	</properties>
