@@ -51,7 +51,7 @@ The source code for wicket-component-authorization-strategy are on GitHub. Pleas
 
 Create your own fork of [astrapi69/wicket-component-authorization-strategy/fork](https://github.com/astrapi69/wicket-component-authorization-strategy/fork)
 
-To share your changes, [submit a pull request](https://github.com/astrapi69/wicket-component-authorization-strategy/pull/new/master).
+To share your changes, [submit a pull request](https://github.com/astrapi69/wicket-component-authorization-strategy/pull/new/develop).
 
 Don't forget to add new units tests on your changes.
 
